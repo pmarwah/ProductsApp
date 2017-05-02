@@ -1,0 +1,62 @@
+<form name="prodForm" class="form-horizontal">
+    <fieldset>
+        <legend>Product Information</legend>
+        <div class="form-group" ng-class="{'has-error':prodForm.inputProdCode.$invalid &&           
+                                                        prodForm.inputProdCode.$dirty}">
+            <label for="inputProdCode" class="col-md-2 control-label">Product Code</label>
+            <div class="col-md-2">
+                <input id="inputProdCode" name="inputProdCode" type=" text" class="form-control " ng-model="vm.product.pCode " ui-mask="A-9999 (required) " required/>
+            </div>
+            <span class="help-block has-error" ng-show="prodForm.inputProdCode.$invalid">
+                  Code required
+            </span>
+        </div>
+
+        <div class=" form-group " ng-class="{'has-error':prodForm.inputProdName.$invalid &&
+                                                       prodForm.inputProdName.$dirty}">
+            <label for="inputProdName " class="col-md-2 control-label ">Product Name</label>
+            <div class="col-md-4 ">
+                <input id="inputProdName " name="inputProdName" type=" text " placeholder="Product Name " class="form-control " ng-model="vm.product.pName " required ng-minlength="3" />
+            </div>
+            <span class="help-block has-error" ng-show="prodForm.inputProdName.$error.required">
+                  Product name required
+            </span>
+            <span class="help-block has-error" ng-show="prodForm.inputProdName.$error.minlength">
+                  Product name must me more than 3 characters
+            </span>
+        </div>
+
+        <div class="form-group ">
+            <label for="inputManufacturingDate " class="col-md-2 control-label ">Manufacturing Date</label>
+            <div class="col-md-6 ">
+                <input class="col-md-4 " id="inputManufacturingDate " class="form-control " datepicker-popup="MMM dd, yyyy " type="text " ng-model="vm.product.manufacturingDate " is-open="vm.opened " />
+
+                <span class="input-group-btn ">
+                    <button class="btn btn-default " ng-click="vm.open($event) ">
+                        <i class="glyphicon glyphicon-calendar "></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-4 col-md-offset-2 ">
+                <span>
+                    <button class="btn btn-primary "
+                            style="width:80px;margin-right: 10px "
+                            ng-disabled="prodForm.$invalid"
+                            ng-click="vm.submit() ">Save
+                    </button>
+                </span>
+                <span>
+                    <button class="btn btn-default "
+                            style="width:70px "
+                            ng-click="vm.cancel() ">Cancel
+                    </button>
+                </span>
+
+            </div>
+        </div>
+
+    </fieldset>
+</form>
